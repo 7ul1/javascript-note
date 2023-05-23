@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>ie9 attachEvent</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        // 1. 传统注册事件
+        btns[0].onclick = function () {
+            alert('你好');
+        }
+        btns[0].onclick = function () {
+            alert('我不好呀');
+        }
+        // 2. 事件侦听注册事件 addEventListener 
+        // (1) 里面的事件类型时字符串 必定加引号 而且不带on
+        // (2) 同一个元素 用一个事件 可以添加多个侦听器(事件处理程序)
+        btns[1].addEventListener('click', function () {
+            alert('hello')
+        })
+        btns[1].addEventListener('click', function () {
+            alert('hello word')
+        })
+        // for (var i = 0; i <= 100; i++) {
+        //     btns[1].addEventListener('click', function () {
+        //         alert('hello word')
+        //     })
+        // }
+        // 3. attachEvent ie9 以前的版本支持
+        btns[2].attachEvent('onclick', function () {
+            alert('我不是很好啊');
+        })
+    </script>
+</body>
+
+</html>

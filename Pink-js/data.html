@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<div></div>
+
+<body>
+    <script>
+        // // var data2 = new Date('2019-10-1 8:8:8');
+        // // console.log(data2);
+        // var data = new Date;
+        // // 年
+        // var year = data.getFullYear();
+        // console.log(year);
+        // // 月
+        // var month = data.getMonth() + 1;
+        // console.log(month);
+        // // 日
+        // var date = data.getDate();
+        // console.log(date);
+        // // 星期
+        // var day = data.getDay();
+        // console.log(day);
+        // // 时
+        // var hours = data.getHours();
+        // console.log(hours);
+        // // 分
+        // var minute = data.getMinutes();
+        // console.log(minute);
+        // // 秒
+        // var second = data.getSeconds();
+        // second = second < 10 ? '0' + second : second;
+        // console.log(second);
+        // // 总
+        // console.log(year + '年' + month + '月' + date + '日' + '-' + '星期' + day + '-' + hours + '点' + minute + '分' + second + '秒');
+        // var time = year + '年' + month + '月' + date + '日' + '-' + '星期' + day + '-' + hours + '点' + minute + '分' + second + '秒'
+
+        // var div = document.querySelector('div');
+        // // var box = document.getElementsByName('div');
+        // div.innerHTML = time;
+        // var conter = prompt('输入时间俩字');
+        // if (conter = '时间') {
+        //     alert(time);
+        // } else {
+        //     prompt('重新输入时间');
+        // };
+
+        // 获取Date总的毫秒数 不是当前时间的毫秒数 而是距离1970年1月1号过了多少毫秒数
+
+        // 实例化Date对象
+        var date = new Date();
+
+        // 1 .通过 valueOf()  getTime() 用于获取对象的原始值
+        console.log(date.valueOf());  //得到现在时间距离1970.1.1总的毫秒数
+        console.log(date.getTime());
+
+        // 2.简单的写法
+        var date1 = +new Date();  // +new Date()返回的就是总的毫秒数，
+        console.log(date1);
+
+        // 3. HTML5中提供的方法 获得总的毫秒数 有兼容性问题
+        console.log(Date.now());
+
+    </script>
+</body>
+
+</html>

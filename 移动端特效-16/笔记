@@ -1,0 +1,109 @@
+; 触碰事件概述
+移动端浏览器兼容性较好 我们不需要考虑以前js的兼容性问题 可以放心的使用原生js书写效果 但是移动端也有自己独特的地方 比如触屏事件 touch(也称触摸事件) Android 和 IOS 都有
+
+; 触屏事件 touch
+touch 对象代表一个触摸点 触摸点可能是一根手指 也可能是一根触摸笔 触屏事件可响应用户手指(或触控笔)对屏幕或者触控板操作
+
+; 常见的触屏事件如下：
+1. touchstart 手指触摸到一个 DOM 元素时触发
+2. touchmove 手指在一个 DOM 元素上滑动时触发
+3. touchend 手指从一个 DOM 元素上移开时触发
+
+; 触摸事件对象 TouchEvent
+
+TouchEvent 是一类描述手指在触摸平面(触摸屏 触摸板等)的状态变化的事件 这类事件用于描述一个或多个触点 使开发者可以检测触点的移动 触点的增加和减少 等等
+touchstart touchmove touchend 三个事件都会各自有事件对象
+
+1. touches 正在触摸屏幕的所有手指的一个列表
+在开发者工具中，点击了元素，显示出的 touches 列表里面的 length 代表的是有几个手指触摸屏幕
+
+2. targetTouches 正在触摸当前 DOM 元素上的手指的一个列表
+在开发者工具中，点击了元素，显示出的 targetTouches 列表里面的 length 代表的是有几个手指触摸屏幕中的该元素
+
+3. changedTouches 手指状态发生了改变的列表 从无到有 从有到无变化
+
+因为我们一般都是触摸元素 所以最经常使用的是 targetTouches
+
+; 阻止屏幕滚动的默认行为
+e.preventDefault()
+
+检测过渡完成事件 transitionend
+
+; classList 属性
+classList属性是HTML5新增的一个属性 返回元素的类名 但是ie10以上的版本支持
+
+; 添加类：
+element.classList.add('类名')
+; 例子：focus.classList.add('current')
+
+; 移除类：
+element.classList.remove('类名')
+
+; 切换类：
+element.classList.toggle('类名')
+
+; click 延时解决方案
+移动端 click 事件会有 300ms 的延时 原因是移动端屏幕双击会缩放(double tap to zoom)页面
+
+; 插件
+移动端要求的是快速开发 所以会借助于一些插件来帮我完成操作
+
+; 什么是插件
+JS插件 是 js文件 它遵循一定规范编写 方便程序展示效果 拥有也定功能且方便调用 
+;如 轮播图 和 瀑布流插件 
+
+; 插件特点
+它一般是为了解决某个问题而专门存在 其功能单一 并且比较小
+我们以前写的 animate.js 也算一个最简单的插件
+
+插件最大特点就是：方便且快捷
+
+; Swiper 插件的使用
+1. 引入插件相关文件
+2. 按照规定语法使用
+
+; 视频
+视频插件 zy.media.js
+H5 提供了 video 标签 但浏览器的支持情况不同
+不同的视频格式文件 可以通过 source解决
+
+; 框架概述
+顾名思义就是一套架构 基于自身的特点向用户提供一套较为完整的解决方案 框架的控制权在框架本身 使用者按照框架所规定的某种规范进行开发
+
+插件一般是为了解决某个问题而专门存在 其功能单一 并且比较小
+
+; 前端常用框架
+Bootstrap Vue Angular React 等 既能开发pc端 也能开发移动端
+
+前端常用的移动端插件有 Swiper superslide iscroll
+框架：大而全 一整套解决方案
+插件：小而专一 某个功能的解决方案
+
+; 本地储存特性
+1. 数据存储在用户浏览器中
+2. 设置、读取方便 甚至页面刷新不丢失数据
+3. 容量较大 sessionStorage 约5M localStorage 约20M
+4. 只能存储字符串 可以将对象 JSON.stringify() 编码后存储
+
+; window.sessionStorage
+1. 生命周期为关闭浏览器窗口
+2. 在同意窗口(页面)下数据可以共享
+3. 以键值对的形式存储使用
+
+; 存储-获取-删除-清除所有数据
+sessionStorage.setItem('key', val);
+sessionStorage.getItem('key')
+sessionStorage.removeItem('key');
+sessionStorage.clear();
+
+; window.localStorage
+1. 生命周期永久生效 除非手动删除 否则关闭页面也会存在
+2. 可以多窗口(页面)共享(同一浏览器可以共享)
+3. 以键值对的形式存储使用
+
+; 存储-获取-删除-清除所有数据
+localStorage.setItem('key', val);
+localStorage.getItem('key')
+localStorage.removeItem('key');
+localStorage.clear();
+

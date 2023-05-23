@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function getMax() {
+        //     var arr = [5, 2, 99, 101, 67, 77];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr[i] > arr[i + 1]) {
+        //             arr[i + 1] = arr[i];
+        //         }
+        //     }
+        // }
+        // console.log(getMax());
+
+        function getArrMax(arr) {
+            var max = arr[0];  // arr 接收一个数组
+            for (var i = 1; i <= arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+            }
+            return max;
+        }
+        // getArrMax([5, 2, 99, 101, 67, 77]);  实参是一个数组
+        var re = getArrMax([5, 2, 99, 101, 67, 77]);
+        console.log(re);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

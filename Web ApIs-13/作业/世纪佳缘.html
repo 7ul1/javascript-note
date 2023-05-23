@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 300px;
+            margin: 200px auto;
+        }
+
+        input {
+            outline: none;
+            color: rgb(161, 159, 159);
+            border: 1px solid red;
+        }
+
+        .pink1 {
+            border: 1px solid pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" value="邮箱/ID/手机号" id="zh">
+        <input type="text" value="密码" id="mm">
+    </div>
+    <script>
+        // 1. 获取元素
+        var zh = document.querySelector('#zh');
+        var mm = document.querySelector('#mm');
+        // 2. 注册事件
+        zh.onfocus = function () {
+            if (this.value == '邮箱/ID/手机号') {
+                this.value = '';
+            }
+            this.style.borderColor = 'pink';
+        }
+        zh.onblur = function () {
+            if (this.value == '') {
+                this.value = '邮箱/ID/手机号';
+            }
+            this.style.borderColor = 'red';
+        }
+
+        mm.onfocus = function () {
+            if (this.value == '密码') {
+                this.value = '';
+            }
+            this.style.borderColor = 'pink';
+        }
+        mm.onblur = function () {
+            if (this.value == '') {
+                this.value = '密码';
+            }
+            this.style.borderColor = 'red';
+        }
+    </script>
+</body>
+
+</html>

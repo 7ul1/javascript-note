@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //         const numbers = [5, 6, 2, 3, 7];
+
+        //         // -Infinity 负无穷大
+        //         // const max = Math.max.apply(numbers);
+        //         const max = Math.max.apply(null, numbers);
+
+        //         console.log(max); 
+        //         // expected output: 7
+
+        //         // ----------------------------------------------------------------
+
+        //         // Infinity 正无穷大
+        //         // const min = Math.min.apply(numbers);
+        //         const min = Math.min.apply(null, numbers);
+
+        //         console.log(min);
+        // // expected output: 2
+
+        const array = ['a', 'b'];
+        const elements = [0, 1, 2];
+        array.push.apply(array, elements);
+        console.info(array); // ["a", "b", 0, 1, 2]
+
+    </script>
+</body>
+
+</html>

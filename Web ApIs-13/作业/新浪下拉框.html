@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: pink;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        li:nth-child(1) {
+            list-style: none;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+
+        li:nth-child(n+2) {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li id="btn"></li>
+            <li class="nox"></li>
+            <li class="nox"></li>
+            <li class="nox"></li>
+        </ul>
+    </div>
+    <script>
+        // 1. 获取元素
+        var btn = document.getElementById('btn');
+        var nox = document.querySelectorAll('.nox');
+        // 2. 注册事件
+        btn.onclick = function () {
+            nox.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

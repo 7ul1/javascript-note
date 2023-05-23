@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        span {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        // obj 对象 taraget 目标位置
+        function animate(obj, target) {
+            var timer = setInterval(function () {
+                if (obj.offsetLeft >= target) {
+                    // 停止动画 本质是停止定时器
+                    clearInterval(timer);
+
+                } else {
+                    // 运行动画就必须给该元素添加 position定位 
+                    obj.style.left = obj.offsetLeft + 5 + 'px';
+                }
+            }, 30);
+        }
+        var div = document.querySelector('div');
+        var span = document.querySelector('span');
+        animate(div, 600);
+        animate(span, 500);
+        // var div = document.querySelector('div');
+        // var timer = setInterval(function () {
+        //     if (div.offsetLeft >= 400) {
+        //         // 停止动画 本质是停止定时器
+        //         clearInterval(timer);
+
+        //     } else {
+        //         // 运行动画就必须给该元素添加 position定位
+        //         div.style.left = div.offsetLeft + 5 + 'px';
+        //     }
+        // }, 30);
+
+
+    </script>
+</body>
+
+</html>

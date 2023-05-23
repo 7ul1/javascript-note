@@ -1,0 +1,52 @@
+; JS组成
+
+; JS基础 ↓
+ECMAScript      JavaScript语法
+
+; JS API ↓
+DOM     页面文档对象模型
+BOM     浏览器对象模型
+
+; ECMAScript-两个
+JavaScript-网景公司
+Jscript-微软公司
+
+ECMAScript 规定了JS的编程语法和基础核心知识 是所有浏览器厂商共同遵守的一套JS语法工业标准
+
+; DOM-文档对象模型
+对页面上的元素进行操作（大小 颜色..等等）
+
+; BOM-浏览器对象模型
+操作浏览器窗口什么的（比如弹出框 控制浏览器跳转..等等）
+
+
+; JS初体验
+
+; JS有三种书写位置
+行内 内嵌 外部
+
+; 行内式JS
+<input type="button" value="武松" onclick="alert('老虎')">
+onclick="alert('老虎')"  
+; 引号为单引号 ''  行内式不常用 除特殊情况
+
+; 内嵌式JS
+<script>
+    alert('武松打虎');
+</script>
+; 做案例常用
+
+; 外部式JS
+<script src="my.js"></script>
+; 在js文件里写好后 在html中引入位置 适用于代码量较大的情况
+
+; JS注释
+1.单行注释 两斜杠 // ctrl + /
+2.多行注释 /* */  shift + alt + a
+
+; JS输入输出语句
+
+alert(msg)      浏览器弹出警示框        浏览器
+console.log(msg)        浏览器控制台打印输出信息        浏览器
+prompt(info)        浏览器弹出输入框 用户可以输入       浏览器
+

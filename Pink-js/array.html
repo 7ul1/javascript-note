@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.push() 在我们数组的末尾，添加一个或者多个数组元素 push 推
+        var arr = [1, 2, 3];
+        arr.push(4, '秦晓');
+        console.log(arr);
+        console.log(arr.push(4, '秦晓'));
+        console.log(arr);
+        // push 完毕之后，返回结果是新数组的长度
+
+
+        // 2. unshift 在我们数组的开头 添加一个或者多个数组元素
+        arr.unshift('red');
+        console.log(arr);
+
+        // pop() 它可以删除数组的最后一个元素，一次只能删除一个元素
+        arr.pop(); //不加参数
+        // shift() 它剋删除数组的第一个元素,一次只能删除一个元素
+        arr.shift(); //不加参数
+        console.log(arr);
+
+        var arr = [1500, 1200, 2000, 2100, 1800];
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < 2000) {
+                newArr.push(arr[i]);
+            }
+        }
+        console.log(newArr);
+
+        // 1.翻转数组
+        var arr = ['pink', 'red', 'blue'];
+        arr.reverse();
+        console.log(arr);
+
+        // 2.数组排序(冒泡排序)
+        var arr1 = [3, 4, 7, 1];
+        arr1.sort();
+        console.log(arr1);
+
+        // 对于双位数
+        var arr = [1, 64, 9, 61];
+        arr.sort(function (a, b) {
+            return b - a;  //降序的排列
+            return a - b; //升序
+        }
+        )
+
+        // 封装一个去重的函数 unique 独一无二的
+        function unique(arr) {
+            var newArr = [];
+            for (var i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) === -1) {
+                    newArr.push(arr[i]);
+                }
+            }
+            return newArr;
+        }
+        var demo = unique(['c', 'a', 'z', 'a', 'x', 'a', 'x', 'c', 'b']);
+        console.log(demo);
+
+
+
+    </script>
+</body>
+
+</html>

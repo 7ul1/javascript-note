@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all 0.5s;
+        }
+
+        .change {
+            background-color: purple;
+            color: #fff;
+            font-size: 25px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first"></div>
+    <script>
+        // 1. 使用 element.style 获得修改元素样式 如果样式比较少 或者 功能简单的情况下使用
+        var div = document.querySelector('div');
+        // var flag = 0;
+        div.onclick = function () {
+            // // div.style里面的属性 采取驼峰命名法
+            // if (flag == 0) {
+            //     this.style.backgroundColor = 'purple';
+            //     this.style.width = '250px';
+            //     flag = 1;
+            // } else {
+            //     this.style.backgroundColor = 'pink';
+            //     this.style.width = '200px';
+            //     flag = 0;
+            // }
+
+            // 让我们当前元素的类名改变为 change
+            // 2. 我们可以通过修改元素的 className 更改元素样式 适合样式比较多或者功能比较复杂的情况使用
+            // 3. 如果想要保留原先的类名 我们可以起多类名
+
+            // this.className = 'change';
+
+            this.className = 'first change';
+        }
+
+    </script>
+</body>
+
+</html>

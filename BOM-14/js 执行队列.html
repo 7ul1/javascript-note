@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一个问题
+
+        // console.log(1);
+        // setTimeout(function () {
+        //     console.log(3);
+        // }, 1000);
+        // console.log(2);
+
+        // 同步 和 异步
+        // 为了解决上述问题 利用多核 cpu 的计算能力 html5 提出 web worker 标准 允许JavaScript脚本创建多个线程 于是 js中出现了 同步和异步
+
+        // 同步
+        // 前一个任务结束后再执行后一个任务 程序的执行顺序与任务的排列顺序是一致的
+        // 同步的 比如做饭的同步做法: 我们要烧水煮饭 等水开了(10分钟之后) 再去切菜 炒菜
+
+        // 第二个问题
+        console.log(1);
+        setTimeout(function () {
+            console.log(3);
+        }, 0);
+        console.log(2);
+    </script>
+</body>
+
+</html>

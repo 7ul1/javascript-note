@@ -1,0 +1,358 @@
+; 内置对象
+
+JavaScript中的对象分为三种 为 自定义对象 内置对象 浏览器对象
+前面两种对象是js基础内容 属于ECMAScript 第三个浏览器对象属于我们js独有的 在之后的js api中讲
+
+; 什么是内置对象？
+
+内置对象 就是指 js语言自带的一些对象 这些对象供开发者使用 并提供一些常用的或最基本而必要的功能(属性和方法)
+内置对象的最大优点就是帮助我们快速开发
+
+比如: Math Date Array String等...
+
+; Math绝对值和三个取整方法
+
+; // 1. 绝对值方法
+
+console.log(Math.abs(1)); // 1
+console.log(Math.abs(-1)); // 1
+console.log(Math.abs('-1')); // 隐式转换 会把字符串型 -1 转换为数字型
+console.log(Math.abs('pink')); // NaN
+
+; // 2. 三个取整方法
+
+; // (1) Math.floor() 向下取整 往最小了取整
+console.log(Math.floor(1.1)); // 1
+console.log(Math.floor(1.9)); // 1
+
+; // (2) Math.ceil() 向上取整 往最大.了取值
+console.log(Math.ceil(1.1)); // 2
+console.log(Math.ceil(1.9)); // 2
+
+; // (3) Math.round() 四舍五入 其他数字都是四舍五入 但是 .5 特殊 它往大了取
+console.log(Math.round(1.1)); // 1
+console.log(Math.round(1.5)); // 2
+console.log(Math.round(1.9)); // 2
+console.log(Math.round(-1.1)); // -1
+console.log(Math.round(-1.5)); // 这个结果是 -1
+
+; 随机数方法 random()
+
+Math对象随机数方法 random() 返回一个随机的小数  0 <= x < 1
+这个方法里面不跟参数
+
+;我们想要得到两个数之间的随机整数 并且包含这2个整数
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+} 
+var num = getRandomInt(1, 10);
+console.log(num);
+
+
+; 日期对象
+
+Date() 日期对象 是一个构造函数 必须使用 new 来调用创建我们的日期对象
+
+1. 使用Date  如果没有参数 返回当前系统的当前时间
+2. 参数常用的写法 数字型 2019,10,01 或者是字符串型 '2019-10-1 8:8:8'
+
+; 格式化日期 年月日
+
+var date = new Date();
+console.log(date.getFullYear()); // 返回当前日期年
+console.log(date.getMonth() + 1); // 月份 返回的月份小1月 记得+1月份
+console.log(date.getDate()); // 返回的是 几号
+console.log(date.getDay()); // 返回的是星期几 周一返回的是 1 周六返回的是 6 周日返回的是 0
+
+; 时分秒
+
+var hours = date.getHours();
+var minutes = date.getMinutes();
+var seconds = date.getSeconds();
+
+; 三元表达式补零
+h = h < 10 ? '0' + h : h;  
+
+; 星期 0-6
+var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+var day = date.getDay();
+
+; 获得Date总的毫秒数(时间戳) 
+不是当前时间的毫秒数 而是距离1970年1月1日过了多少毫秒数
+
+; 1. 通过 valueOf()  getTime()
+
+var date = new Date();
+console.log(date.valueOf()); // 就是 我们现在时间 距离1970.1.1 总的毫秒数
+console.log(date.getTime());
+
+; 2. 简单的写法  (最常用的写法)
+
+var date1 = +new Date(); // +new Date() 返回的就是总的毫秒数
+console.log(+new Date());
+
+; 3. H5 新增的 获得总毫秒数
+
+console.log(Date.now());
+
+; 创建数组的两种方式
+
+1. 利用数组字面量
+
+ var arr = [1, 2, 3];
+ console.log(arr[0]);
+
+2. 利用 new Array()
+
+; // var arr1 = new Array(); // 创建了一个空的数组
+; // var arr1 = new Array(2); // 这个2 表示 数组的长度为2 里面有2个空的数组元素
+var arr1 = new Array(2, 3); // 等价于 [2,3] 这样写表示 里面有2个数组元素 时 2和3
+console.log(arr1);
+
+; 检测是否为数组
+
+(1) instanceof 运算符 它可以用来检测是否为数组
+
+var arr = [];
+var obj = {};
+console.log(arr instanceof Array); true
+console.log(obj instanceof Array); flase
+
+(2) Array.isArray(参数); H5新增的方法 ie9以上版本支持
+
+console.log(Array.isArray(arr));
+console.log(Array.isArray(obj));
+
+; 添加删除数组元素方法
+
+; 1. push() 在我们数组的末尾 添加一个或多个数组元素 push 推
+
+var arr = [1, 2, 3];
+; // arr.push(4, 'pink', 5);
+console.log(arr.push(4, 'pink'));
+console.log(arr);
+
+(1) push 是可以给数组追加新的元素
+(2) push() 参数直接写 数组元素就可以了
+(3) push完毕之后 返回的结果是 新数组的长度
+(4) 原数组也会发生变化
+
+; 2. unshift 在我们数组的开头 添加一个或多个数组元素
+
+arr.unshift('red', 'purple');
+console.log(arr.unshift('red', 'purple'));
+console.log(arr);
+
+(1) unshift 是可以给数组 前面 追加新的元素
+(2) unshift() 参数直接写 数组元素就可以了
+(3) unshhift 完毕之后 返回的结果是 新数组的长度
+(4) 原数组也会发生变化
+
+; 3. pop() 它可以删除数组的最后一个元素
+
+; // arr.pop();
+console.log(arr.pop());
+console.log(arr);
+
+(1) pop 是可以删除数组的最后一个元素 记住一次只能删除一个元
+(2) pop() 没有参数
+(3) pop 完毕之后 返回的结果是 删除的那个元素
+(4) 原数组也会发生变化
+
+; 4. shift() 它可以删除数组的第一个元素
+
+console.log(arr.shift());
+console.log(arr);
+
+(1) shift 是可以删除数组的第一个元素 记住一次只能删除一个元素
+(2) shift() 没有参数
+(3) shift 完毕之后 返回的结果是 删除的那个元素
+(4) 原数组也会发生变化
+
+; 反转数组
+
+var arr = [1, 2, 3];
+arr.reverse(); 反转数组
+console.log(arr);
+
+
+var arr1 = [13, 4, 77, 1, 7];
+arr1.sort(function (a, b) {
+    // return a - b; // 升序的顺序排列
+    return b - a; // 降序的顺序排列
+});
+console.log(arr1);
+
+; 获取数组索引方法
+
+返回数组元素索引号方法 indexOf(数组元素) 作用就是返回该数组元素的索引号
+它只返回第一个满足条件的索引号
+它如果在该数组里面找不到元素 则返回的是 -1
+
+; // var arr = [1, 2, 3, 4];
+var arr = [1, 2, 3, 4];
+console.log(arr.indexOf(2));
+
+返回数组元素索引号方法 lastIndexOf(数组元素) 作用就是返回该数组元素的索引号 从后面开始查找
+var arr = [1, 2, 3, 4, 2];
+console.log(arr.lastIndexOf(2)); // 4
+
+; 数组转换为字符串
+
+1. toString() 将我们的数组转换为字符串
+
+var arr = [1, 2, 3];
+console.log(arr.toString());  // 1,2,3
+
+2. join(分隔符) 
+
+var arr1 = ['pink', 'blue', 'red'];
+console.log(arr1.join());  // pink,blue,red
+console.log(arr1.join('-'));  // pink-blue-red
+console.log(arr1.join('&'));  // pink&blue&red
+
+; 基本包装类型
+
+var str = 'andy';
+console.log(str.length);
+
+对象 才有 属性和方法   复杂数据类型才有 属性和方法
+简单数据类型为什么会有length 属性呢？
+基本包装类型： 就是把简单数据类型 包装成为 复杂数据类型  过程就是基本包装
+
+(1) 把简单数据类型包装为复杂数据类型
+var temp = new String('andy');
+(2) 把临时变量的值 给 str
+str = temp;
+(3) 销毁临时变量
+temp = null;
+
+; 字符串的不可变性
+
+var str = 'andy';
+console.log(str);
+
+str = 'red';
+console.log(str);
+
+因为我们字符串的不可变 所以不要大量的拼接字符串
+
+var str = '';
+for (var i = 1 ；i <= 100； i++) {
+    str += i;
+}
+console.log(str);
+
+; 字符串对象 
+
+根据字符返回位置
+str.indexOf('要查找的字符',[起始的位置])
+
+var str = '改革春风吹满地，春天来了';
+console.log(str.indexOf('春'));
+console.log(str.indexOf('春', [3])); // 从索引号是 3的位置往后查找
+
+; 根据位置返回字符
+
+; 1. charAt(index) 根据位置返回字符
+
+var str = 'andy';
+console.log(str.charAt(3));
+
+遍历所有的字符
+
+for (var i = 0； i < str.length； i++) {
+    console.log(str.charAt(i));
+}
+
+ASCII码
+
+; 2. charCodeAt(index) 返回相应索引号的字符ASCII值 目的： 判断用户按下了哪个键
+
+console.log(str.charCodeAt(0)); 97
+
+; 3. str[index]   H5新增的
+
+console.log(str[0]);
+
+; 有一个对象 来判断是否有该属性 对象['属性名']
+
+var o = {
+    age: 18
+}
+if (o['age']) {
+    console.log('里面有该属性');
+} else {
+    console.log('没有该属性');
+}
+
+1. concat('字符串1','字符串2'....)
+
+var str = 'andy';
+console.log(str.concat(' red'));
+
+2. substr('截取的起始位置','截取几个字符')
+
+var str1 = '改革春风吹满地';
+console.log(str1.substr(2, 2)); 
+; 第一个2 是索引号的 2 从第几个开始 第二个2 是取几个字符
+
+; 其他方法
+
+; 1. 替换字符 replace('被替换的字符','替换为的字符')
+
+var str = 'andyandy';
+console.log(str.replace('a', 'b')); // bndy
+; 有一个字符串 'abcoefoxyozzopp' 要求把里面所有的 o 替换成 *
+var str1 = 'abcoefoxyozzopp';
+while (str1.indexOf('o') !== -1) {
+    str1 = str1.replace('o', '*')
+}
+console.log(str1);
+
+; 2. 字符转换为数组 split('分隔符')   前面我们学过 join 把数组转换为字符串 
+
+var str2 = 'red, pink, blue';
+console.log(str2.split(','));
+var str3 = 'red&pink&blue';
+console.log(str3.split('&'));
+var arr = [1, 2, 3];
+console.log(arr.join(','));
+
+; 3. 转换大小写
+
+var str5 = 'abcdef';
+console.log(str5.toUpperCase());
+var str6 = 'AKFOENC';
+console.log(str6.toLowerCase());
+
+; 简单类型和复杂类型
+简单类型又叫做 基本数据类型或者 值类型 复杂类型又叫做 引用类型
+
+值类型：简单数据类型/基本数据类型 在存储时变量中存储的是值本身 因此叫做值类型
+String number boolean undefined null ---简单数据类型
+
+引用类型：复杂数据类型 在存储时变量中存储的仅仅是地址(引用) 因此叫做引用数据类型
+通过 new 关键字创建的对象(系统对象 自定义对象) 如: Object Array Date
+
+; 堆和栈
+
+栈(操作系统): 由操作系统自动分配释放存放函数的参数值 局部变量的值等 其操作方式类似于数据结构中的栈;
+简单数据类型存放到栈里面
+
+堆(操作系统): 存储复杂数据类型(对象) 一般由程序员分配释放 若程序员不释放 由垃圾回收机制回收;
+复杂数据类型存放到堆里面
+
+注意: JavaScript中没有堆栈的概念 通过堆栈的方式 可以让大家更容易理解代码的一些执行方式 便于将来学习其它语言
+
+; 简单类型传参
+函数的形参也可以看作是一个变量 当我们把一个值类型变量作为参数传给函数的形参 其实是把变量在栈空间里的值复制了一份给形参 那么在方法内部对新参做任何修改 都不会影响到外部变量
+
+
+; 复杂数据传参
+函数的形参也可以看作是一个变量 当我们把引用类型变量传给形参时 其实是把变量在栈空间里保存的堆地址复制给了形参 形参和实参其实保存的是同一个地址 所以操作的是同一个对象
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var str = 'abaasdffggghhjjkkgfddsssss3444343';
+
+        // // 字符串长度
+        // console.log(str.length);
+
+        // // 取出指定(所有)位置的字符
+        // console.log(str.charAt(5));
+        // // for (var i = 0; i < str.length; i++) {
+        // //     console.log(str.charAt(i));
+        // // }
+
+        // // 查找指定字符是否在以上字符a串中存在
+        // if (str.indexOf('a') !== -1) {
+        //     console.log('有');
+        // } else {
+        //     console.log('没有');
+        // }
+
+        // // 替换指定的字符
+        // console.log(str.replace('ss', 'b'));
+
+        // // 截取指定位置的字符串
+        // console.log(str.substr('0', '5'));
+
+        // 最多的字符和次数
+        var str = 'abaasdffggghhjjkkgfddsssss';
+        var obj = {};
+        for (var i = 0; i < str.length; i++) {
+            chars = str.charAt(i);
+            if (obj[chars]) {
+                obj[chars]++;
+            } else {
+                obj[chars] = 1;
+            }
+        }
+        console.log(obj);
+        var max = 0;
+        var ch = '';
+        for (var k in obj) {
+            if (obj[k] > max) {
+                max = obj[k];
+                ch = k;
+            }
+        }
+        console.log(max);
+        console.log(ch);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

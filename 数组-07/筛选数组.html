@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 方法 1
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var arr1 = []
+        var j = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] >= 10) {
+                // 新数组索引号应该从 0 开始 依次递增
+                arr1[j] = arr[i];
+                j++;
+            }
+        }
+        console.log(arr1);
+        // 方法 2
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var arr1 = [];
+        // var j = 0;
+        // arr1.length = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] >= 10) {
+                // 新数组索引号应该从 0 开始 依次递增
+                arr1[arr1.length] = arr[i];
+                // j++;
+            }
+        }
+        console.log(arr1);
+        // 小于10 等于10
+        var arr = [2, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        var arr1 = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] == 10) {
+                arr1[arr1.length] = arr[i];
+            }
+        }
+        console.log(arr1);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+        }
+        var random = getRandomInt(1, 50);
+
+        // while (true) { // 死循环
+        //     var num = prompt('请输入一个数字 (1-10之间的数字)');
+        //     if (num > random) {
+        //         alert('猜大了');
+        //     } else if (num < random) {
+        //         alert('猜小了');
+        //     } else {
+        //         alert('猜对咯');
+        //         break; // 退出整个循环
+        //         // 退出循环有两种 ： continue 和 break
+        //     }
+
+        // }
+
+        // 要求用户猜 1-50 之间的一个数字 但是只有10次机会
+        for (var i = 1; i <= 10; i++) {
+            var num = prompt('请输入一个数字 (1-50之间的数字)');
+            if (num > random) {
+                alert('猜大了');
+            } else if (num < random) {
+                alert('猜小了');
+            } else {
+                alert('猜对咯');
+                break; // 退出整个循环
+                // 退出循环有两种 ： continue 和 break
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

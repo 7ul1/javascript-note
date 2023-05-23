@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: absolute;
+            width: 100px;
+            /* height: 20px; */
+            /* top: 2px; */
+            /* left: 2px; */
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../image/zyh.png" alt="">
+    <script>
+        var pic = document.querySelector('img');
+        document.addEventListener('mousemove', function (e) {
+            // 1. mousemove 只要我们鼠标移动 1px 就会触发这个事件
+            // console.log(1);
+            // 2. 核心原理: 每次鼠标移动 我们都会获得最新的鼠标坐标 把这个 x y 坐标作为图片的 top 和left 值 就可以移动图片
+            var x = e.pageX;
+            var y = e.pageY;
+            // console.log('x坐标是' + x, 'y坐标是' + y);
+            pic.style.left = x + 'px';
+            pic.style.top = y + 'px';
+        })
+    </script>
+</body>
+
+</html>

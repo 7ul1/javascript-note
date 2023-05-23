@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num = prompt('欢迎使用简易计算器\n 1. 加法运算：\n 2. 减法运算：\n 3. 乘法运算：\n 4. 除法运算：\n 5. 退出：\n 请输入您的选项')
+        if (num == 1) {
+            var anum1 = prompt('请输入一个数值：');
+            var anum2 = prompt('请输入一个数值：');
+            var asover = parseFloat(anum1) + parseFloat(anum2);
+            alert('您加法运算结果为' + asover);
+        }
+        if (num == 2) {
+            var Bnum1 = prompt('请输入一个数值：');
+            var Bnum2 = prompt('请输入一个数值：');
+            var Bsover = parseFloat(Bnum1) - parseFloat(Bnum2);
+            alert('您减法运算结果为' + Bsover);
+        }
+        if (num == 3) {
+            var Cnum1 = prompt('请输入一个数值：');
+            var Cnum2 = prompt('请输入一个数值：');
+            var Csover = parseFloat(Cnum1) * parseFloat(Cnum2);
+            alert('您乘法运算结果为' + Csover);
+        }
+        if (num == 4) {
+            var Dnum1 = prompt('请输入一个数值：');
+            var Dnum2 = prompt('请输入一个数值：');
+            var Dsover = parseFloat(Dnum1) / parseFloat(Dnum2);
+            alert('您除法运算结果为' + Dsover);
+        }
+        if (num == 5) {
+            alert('您已退出..');
+        } else {
+            alert('您已退出..');
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

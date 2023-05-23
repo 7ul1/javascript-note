@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 
+        function f1() {
+            var num = 123;
+            function f2() {
+                console.log(num); // 站在目标出发 一层一层的往外查找
+            }
+            f2();
+        }
+        var num = 456;
+        f1();
+        // console.log(num);
+
+
+        // 2. 
+        var a = 1;
+        function fn1() {
+            var a = 2;
+            var b = '22';
+            fn2();
+            function fn2() {
+                var a = 3;
+                fn3();
+                function fn3() {
+                    var a = 4;
+                    console.log(a);
+                    console.log(b);
+                }
+            }
+        }
+        fn1();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+        }
+
+        .hour {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        .minute {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+
+        .second {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+    <script>
+        // 获取元素
+        var hour = document.querySelector('.hour'); // 小时
+        var minute = document.querySelector('.minute'); // 分钟
+        var second = document.querySelector('.second'); // 秒
+        var shuruTime = +new Date('2026-8-18 00:00:00');
+        countDown(); // 先调用一次这个函数 防止第一次刷新页面有空白
+        // 2. 开启定时器
+        setInterval(countDown, 1000);
+        function countDown() {
+            var nowTime = +new Date();
+
+            var times = (shuruTime - nowTime) / 1000;
+
+            var h = parseInt(times / 60 / 60 % 24);
+            h = h < 10 ? '0' + h : h;
+            hour.innerHTML = h; // 把剩余的小时给 小时黑色盒子
+            var m = parseInt(times / 60 % 60);
+            m = m < 10 ? '0' + m : m;
+            minute.innerHTML = m; // 把剩余的分钟给 分钟黑色盒子
+            var s = parseInt(times % 60);
+            s = s < 10 ? '0' + s : s;
+            second.innerHTML = s; // 把剩余的秒数给 秒数的黑色盒子
+
+
+        }
+    </script>
+</body>
+
+</html>

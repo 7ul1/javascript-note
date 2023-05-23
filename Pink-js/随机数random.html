@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 得到两个数之间的随机整数，并且包含这两个整数
+        // function getRandom(min, max) {
+        //     return Math.floor(Math.random() * (max - min + 1)) + min;
+        // }
+        // console.log(getRandom(1, 10));
+
+        // // one
+        // function ranmon(min, max) {
+        //     return Math.floor(Math.random() * (max - min + 1)) + min;
+        // }
+        // console.log(ranmon(2, 80));
+
+        // console.log(Math.random(0, 1));
+
+        // function getRandom(min, max) {
+        //     return Math.floor(Math.random() * (max - min + 1)) + min;
+        // }
+        // var arr = ['张三', '李四', '王五', '秦六'];
+        // console.log(arr[getRandom(0, arr.length - 1)]);
+
+
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        var random = getRandom(1, 10);
+        while (true) { //死循环 ，需要退出循环条件
+            var num = prompt('请输入1~10之间的一个整数:');
+            if (num > random) {
+                alert('你猜大了');
+            } else if (num < random) {
+                alert('你猜小了');
+            } else {
+                alert('你猜中了');
+                break; //退出整个循环
+            }
+        }
+
+    </script>
+</body>
+
+</html>

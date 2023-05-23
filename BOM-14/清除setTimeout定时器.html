@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击停止定时器</button>
+    <script>
+        // 获取元素
+        var btn = document.querySelector('button');
+        // 声明了一个名为 timer1 的定时器
+        var timer1 = setTimeout(function () {
+            console.log('爆了');
+        }, 5000);
+        // 这里点击了 button 会调用这个函数 且停止名为 timer1 的定时器
+        btn.addEventListener('click', function () {
+            clearTimeout(timer1);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 1-100平均值
+        var sum = 0;
+        var average = 0;
+        for (var i = 1; i <= 100; i++) {
+            sum = sum + i;
+        }
+        average = sum / 100;
+        console.log(average);
+
+        // 2. 1-100偶数和奇数和
+        var even = 0;
+        var odd = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 2 == 0) {
+                even = even + i;
+            } else {
+                odd = odd + i;
+            }
+        }
+        console.log(even);
+        console.log(odd);
+
+        // 3. 3整除的合
+        var num = 0;
+        for (var i = 1; i <= 100; i++) {
+            if (i % 3 == 0) {
+                num = num + i;
+            }
+        }
+        console.log(num);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

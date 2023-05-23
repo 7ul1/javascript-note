@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <body>
+    <ul>
+        <li>知否知否，应是等你好久</li>
+        <li>知否知否，应是等你好久</li>
+        <li>知否知否，应是等你好久</li>
+        <li>知否知否，应是等你好久</li>
+        <li>知否知否，应是等你好久</li>
+    </ul>
+    <script>
+        // 1.返回的是获取过来元素对象的集合 以伪数组的形式存储
+        var lis = document.getElementsByTagName('li');
+        console.log(lis);
+        // console.log(lis[0]);
+        // // 2.依次打印,遍历
+        for (var i = 0; i < lis.length; i++) {
+            console.log(lis[i]);
+        }
+        // 3.如果页面中只有 1 个 li，返回的还是伪数组的形式
+        // 4.如果页面中没有这个元素，返回的是空伪数组
+    </script>
+
+</body> -->
+
+<!-- <body>
+    <div></div>
+    <p>
+        我是文字
+        <span>123</span>
+    </p>
+
+    <script>
+        // innerText 和 innerHTML的区别 
+        // 1. innerText 不识别html标签,去除空格和换行
+        var div = document.querySelector('div');
+        // div.innerText = '<strong>今天是：</strong> 2019';
+        // 2. innerHTML 识别html标签 保留空格和换行的
+        div.innerHTML = '<strong>今天是：</strong> 2019';
+        // 这两个属性是可读写的  可以获取元素里面的内容
+        var p = document.querySelector('p');
+        console.log(p.innerText);
+        console.log(p.innerHTML);
+        // div.style.background = 'pink';
+    </script>
+</body> -->
+
+<!-- <body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        // 1. 获取所有按钮元素
+        var btns = document.getElementsByTagName('button');
+        // btns得到的是伪数组  里面的每一个元素 btns[i]
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].onclick = function () {
+                // (1) 我们先把所有的按钮背景颜色去掉  干掉所有人
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].style.backgroundColor = '';
+                }
+                // (2) 然后才让当前的元素背景颜色为pink 留下我自己
+                this.style.backgroundColor = 'pink';
+
+            }
+        }
+        //2. 首先先排除其他人，然后才设置自己的样式 这种排除其他人的思想我们成为排他思想
+    </script>
+</body> -->
+
+<!-- <body>
+    <div id="demo" index="1" class="nav"></div>
+    <script>
+        var div = document.querySelector('div');
+        // 1. 获取元素的属性值
+        // (1) element.属性
+        console.log(div.id);
+        //(2) element.getAttribute('属性')  get得到获取 attribute 属性的意思 我们程序员自己添加的属性我们称为自定义属性 index
+        console.log(div.getAttribute('id'));
+        console.log(div.getAttribute('index'));
+        // 2. 设置元素属性值
+        // (1) element.属性= '值'
+        div.id = 'test';
+        div.className = 'navs';
+        // (2) element.setAttribute('属性', '值');  主要针对于自定义属性
+        div.setAttribute('index', 2);
+        div.setAttribute('class', 'footer'); // class 特殊  这里面写的就是class 不是className
+        // 3 移除属性 removeAttribute(属性)    
+        div.removeAttribute('index');
+
+    </script>
+</body> -->
+
+<!-- <body> -->
+<!-- 节点的优点
+    <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima">×</span>
+        </div>
+    </div>
+
+    <script>
+        // 1. 父节点 parentNode
+        var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        // 得到的是离元素最近的父级节点(亲爸爸) 如果找不到父节点就返回为 null
+        console.log(erweima.parentNode);
+    </script> -->
+
+<!-- </body> -->
+
+<body>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <ol>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+    <script>
+        // DOM 提供的方法（API）获取
+        var ul = document.querySelector('ul');
+        var lis = ul.querySelectorAll('li');
+        // 1. 子节点  childNodes 所有的子节点 包含 元素节点 文本节点等等
+        console.log(ul.childNodes);
+        console.log(ul.childNodes[0].nodeType);
+        console.log(ul.childNodes[1].nodeType);
+        // 2. children 获取所有的子元素节点 也是我们实际开发常用的
+        console.log(ul.children);
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,735 @@
+; web Api
+
+JS基础阶段: ECMAScript 标准规定的基本语法
+
+WebApis阶段: 主要学 DOM 和 BOM
+
+JS基础学习 ECMAScript 基础语法为后面做铺垫 WebApis 是JS的应用 大量使用 js 基础语法做交互效果
+
+API 和 WebAPI
+
+; API(应用程序编程接口)
+是一些预先定义的函数 目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力 而又无需访问源码 或理解内部工作机制的细节
+简单理解: API 是给程序员提供的一种工具 以便能更轻松的实现想要完成的功能
+
+; Web API
+Web API 是浏览器 提供的一套操作 浏览器功能 和 页面元素 的 API (BOM DOM)
+
+; 什么是DOM?
+
+文档对象模型 是W3C组织推荐的处理可扩展标记语言的标准编程接口
+
+W3C已经定义了一系列的DOM接口 通过这些接口可以改变网页的内容 结构和样式
+
+DOM树
+
+文档: 一个页面就是一个文档 DOM中使用 document 表示
+元素: 页面中的所有标签都是元素 DOM中使用 element 表示
+节点: 网页中的所有内容都是节点(标签 属性 文本 注释等) DOM中使用 node 表示
+
+DOM把以上内容都看作是对象
+
+; 获取元素
+
+DOM在我们实际开发中主要用来操作元素
+
+获取页面中的元素可以使用以下方法: 
+
+1.根据ID获取
+2.根据标签名获取
+3.通过HTML5新增的方法获取
+4.特殊元素获取
+
+; 根据ID获取
+
+使用 getElementByld() 方法可以获取带有 ID 的元素对象
+
+<div id="time">2022-8-18</div>
+
+1. 因为我们文档页面从上往下加载 所以先得有标签 所以我们 script 写道标签下面
+2. get 获取 element 元素 by 通过 驼峰命名法
+3. 参数  id 是大小写敏感的字符串
+4. 返回的是一个元素对象 返回的是一个对象
+
+var timer = document.getElementById('time');
+console.log(timer); <div id="time">2022-8-18</div>
+console.log(typeof timer); object
+
+5. console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法
+
+console.dir(timer);
+
+; 根据标签名获取
+
+使用 getElementsByTagName() 方法可以获取带有 指定标签名的 对象的集合
+
+; document.getElementsByTagName('标签名');
+
+1. 返回的是 获取过来元素对象的集合 以伪数组的形式存储的
+
+var lis = document.getElementsByTagName('li');
+console.log(lis);
+console.log(lis[0]);
+
+2. 依次打印里面的元素对象 我们可以采取遍历的方式
+3. 如果页面中只有一个li 返回的还是 伪数组的形式
+4. 如果页面中没有这个元素 则返回的是空的伪数组
+
+注意: 
+1. 因为得到的是一个对象的集合 所以我们想要操作里面的元素就需要遍历
+2. 得到元素对象是动态的
+
+还可以获取某个元素(父元素)内部所以指定标签名的子元素  父元素必须是指定的单个元素
+; element.getElementsByTagName('标签名');
+
+注意: 
+1. 父元素必须是 单个对象(必须指明是哪一个元素对象) 获取的时候不包括父元素自己
+
+; 通过HTML5新增的方法获取
+
+1. document.getElementsByClassName('类名'); 根据类名返回元素对象集合
+2. document.querySelector('选择器'); 根据指定选择器返回第一个元素对象
+3. document.querySelectorAll('选择器'); 根据指定选择器返回
+
+; 获取特殊元素 
+
+; 1. 获取body 元素
+
+var bodyEle = document.body;
+console.log(bodyEle);
+console.dir(bodyEle);
+
+; 2. 获取html 元素
+
+; var htmlEle = document.html;
+var htmlEle = document.documentElement;
+console.log(htmlEle);
+
+; 事件三要素
+
+概述: JavaScript 使我们有能力创建动态页面 而事件是可以被 JavaScript 侦测到的行为
+简单理解: 触发--响应机制
+网页中每个元素都可以产生某些可以触发 JavaScript 的事件
+
+;点击一个按钮 弹出对话框
+
+1. 事件由三部分组成 事件源 事件类型 事件处理程序 称为事件三要素
+
+(1) 事件源 事件被触发的对象 谁 按钮
+
+var btn = document.getElementById('btn');
+
+(2) 事件类型 如何触发 什么事件 比如鼠标点击(onclick) 鼠标经过 还
+(3) 事件处理程序 通过一个函数赋值的方式 完成
+
+btn.onclick = function () {
+    alert('点秋香');
+}
+
+; 执行事件的步骤
+ 
+1. 获取事件源
+2. 注册事件(绑定事件)
+3. 添加事件处理程序(采取函数赋值的形式)
+
+; 操作元素
+
+JavaScript 的 DOM 操作可以改变网页的内容 结构和样式 可以利用 DOM 操作元素来改变元素里面的内容 属性等 
+
+; 改变元素的内容
+
+element.innerText
+从起始位置到终止位置的内容 但它去除 html 标签 同时空格和换行也会去掉
+
+element.innerHTML
+起始位置到终止位置的全部内容 包括 html 标签 同时保留空格和换行
+
+; innerText 和 innerHTML 区别
+
+1. innerText 不识别 html 标签 非标准 去除空格和换行
+2. innerHTML 识别 html 标签 W3C标准 保留空格和换行
+
+这两个属性是可读写的 可以获取元素里面的内容
+
+; 表单元素的属性操作
+
+利用 DOM 可以操作如下表单元素的属性:
+type value checked selected disabled
+
+; 样式属性操作
+可以通过 js 修改元素的大小 颜色 位置等样式
+
+; 行内样式操作
+1. element.style
+
+注意: 
+1. js 里面的样式采取驼峰命名法 比如 fontSize backgroundColor
+2. js 修改 style 样式操作 产生的是行内样式 css 权重比较高
+如果样式比较少 或者 功能简单的情况下使用
+
+; 类名样式操作
+2. element.className
+
+注意: 
+1. 如果样式修改比较多 可以采取操作类名方式更改元素样式
+2. class 因为是个保留字 因此使用 className 来操作元素类名属性
+3. className 会直接更改元素的类名 会覆盖原先的类名
+适合样式比较多或者功能比较复杂的情况使用
+如果想要保留原先的类名 我们可以起多类名
+
+; 排他思想(算法)
+如果有同一组元素 我们想要某个元素实现某种样式 需要用到循环的排他思想算法
+
+新事件: 鼠标经过 onmouseover  鼠标离开 onmouseout
+
+; 自定义属性的操作
+
+; 获取属性值
+
+1. element.属性   获取属性值
+2. element.getAttribute('属性') 
+
+区别: 
+
+1. element.属性 获取内置属性值 (元素本身自带的属性)
+2. element.getAttribute('属性') 主要获得自定义的属性(标准) 我们程序员自定义的属性
+两者: 前一种只能获取被定义好的属性 后一种可以获取原先被定义好的 也可以获取自定义的一个属性
+
+; 设置属性值
+
+1. element.属性 = '值' 设置内置属性值
+2. element.setAttribute('属性','值')
+
+在前者钟更改 class的属性值 需要写的是 element.className = '值'
+而后者更改 calss的属性值 需要写的是 element.setAttribute('calss','值') 注意这里 写的是 class 而不是 className
+两者: 前一种可以重新定义原先设置好的属性值 后者也可以设置原先设置好的属性值且可以重新定义原先自定义好的属性值
+
+; 移除属性
+
+1. element.removeAttribute('属性')
+这里的移除属性 它可以移除原先被定义好的 也可以移除被自定义的属性
+
+; H5自定义属性
+
+自定义属性目的: 是为了保存并使用数据 有些数据可以保存到页面中而不用保存到数据库中
+自定义属性获取是通过 getAttribute('属性') 来获取
+
+但有些自定义属性很容易引起歧义 不容易判断是元素的内置属性还是自定义属性
+
+; 设置 H5 自定义属性
+
+H5规定自定义属性 data- 开头做为属性名并且赋值
+例子: <div data-index = '1'><div>
+
+或者使用 js 设置
+
+element.setAttribute('data-index',2)
+
+; 获取 H5 自定义属性
+
+1. 兼容性获取 element.getAttribute('data-index');
+2. H5 新增 element.dataset.index 或者 element.dataset['index'] IE 11 才开始支持
+
+dataset 是一个集合 里面存放了所有以 date 开头的自定义属性
+
+; 节点操作
+
+; 为什么学节点操作
+
+获取元素通常使用两种方式:
+
+; 1. 利用 DOM 提供的方法获取元素
+
+document.getElementById()
+document.getElementsByTagName()
+document.querySelector 等
+
+逻辑性不强 繁琐
+
+; 2. 利用节点层级关系获取元素
+
+利用父子兄节点关系获取元素
+
+逻辑性强 但是兼容性稍差
+
+这两种方式都可以获取元素节点 我们后面会使用 但是节点操作更简单
+
+; 节点概述
+
+网页中所有的内容都是节点 在 DOM 中节点使用 node 来表示
+DOM树中所有的节点 均可通过 JavaScript 来进行访问 也都可以被修改且可以被创建和删除
+
+元素节点 nodeType 
+属性节点 nodeType 
+文本节点 nodeType  (文本节点包含文字 空格 换行)
+
+我们在实际开发中 节点操作主要操作的是 元素节点
+
+; 节点层级
+
+利用 DOM 树可以把节点划分为不同的层级关系 常见的是 父子兄层级关系
+
+; 父级节点
+node.parentNode
+
+得到的是离元素最近的父级节点(亲爸爸) 
+如果找不到父节点 则返回 null
+
+; 子节点
+parentNode.childNodes (标准)
+
+parentNode.childNodes 返回包含指定节点的子节点的集合 该集合为即时更新的集合
+
+注意: 返回值里面包含了所有的子节点 包括元素节点 文本节点等
+如果只想获得里面的元素节点 则需要专门处理 所以我们一般不提倡使用 childNodes
+
+; 子节点-获取第一个子元素和最后一个子元素
+
+; 获取第一个子元素
+parentNode.firstChild
+
+firstChild 返回第一个子节点 找不到则返回 null 同样 也是包含所有的节点
+
+; 获取最后一个子元素
+parentNode.lastChild
+
+lastChild 返回最后一个子节点 找不到则返回 null 同样 也是包含所有的节点
+
+解决方案:
+1. 如果想要第一个子元素节点 可以使用 parentNode.children[0]
+
+
+
+
+; 另外-获取第一个子元素和最后一个子元素
+
+; 获取第一个子元素
+parentNode.firstElementChild
+
+firstElementChild 返回第一个子节点 找不到则返回 null 
+
+; 获取最后一个子元素
+parentNode.lastElementChild
+
+lastElementChild 返回最后一个子节点 找不到则返回 null 
+
+注意: 这两个方法有兼容性问题 IE9 以上才支持
+(这里的两个方法指的是 firstElementChild 和 lastElementChild)
+
+; 兄弟节点
+
+1. node.nextSibling
+
+nextSibling 返回当前元素的下一个兄弟节点 找不到则返回 null 同样 也是包含所有的节点
+
+
+2. node.previousSibling
+
+previousSibling 返回当前元素上一个兄弟节点 找不到则返回 null 同样 也是包含所有的节点
+
+解决方案:
+可以封装一个兼容性的函数
+
+
+
+; 兄弟节点获取元素
+
+3. node.nextElementSibling
+
+nextElementSibling 返回当前元素下一个兄弟元素节点 找不到则返回 null
+
+4. node.previousElementSibling
+
+previousElementSibling 返回当前元素上一个兄弟节点 找不到则返回 null
+
+注意: 这两个方法有兼容性问题 IE9 以上才支持
+(这里的两个方法指的是 nextElementSibling 和 previousElementSibling)
+
+; 创建节点
+
+document.createElement('tagName')
+
+document.createElement() 方法创建由 tagName 指定的 HTML 元素 因为这些元素原先不存在 是根据我们的需求动态生成的 所以我们也成为 动态创建元素节点
+
+; 添加节点
+
+1. node.appendChild(child)
+node.appendChild() 方法将一个节点添加到指定父节点的子节点列表 末尾 类似于 css 里面的 after 伪元素
+(node 父级 child 子级)
+
+2. node.insertBefore(child,指定元素)
+node.insertBefore() 方法将一个节点添加到父节点的指定子节点前面 类似于 css 里面的 before伪元素
+
+; 删除节点
+
+node.removeChild(child)
+node.removeChild() 方法从 DOM 中删除一个子节点 返回删除的节点
+
+; 复制节点(克隆节点)
+
+node.cloneNode()
+
+node.cloneNode() 方法返回调用该方法的节点的一个副本 也成为克隆节点 / 拷贝节点
+
+注意: 
+如果括号参数为 空或者为 false 则是浅拷贝 即只克隆复制节点本身 不克隆里面的子节点
+如果括号参数为 true 则是深度拷贝 会复制节点本身及里面所有的子节点
+
+; 三种动态创建元素区别
+
+1. document.write()
+2. element.innerHTML
+3. document.createElement()
+
+; 区别: 
+
+1. document.write() 是直接将内容写入页面的内容流 但是文档执行完毕 则它会导致页面全部重绘
+
+2. innerHTML 是将内容写入某个 DOM 节点 不会导致页面全部重绘
+3. innerHTML 创建多个元素效率更高 (不要拼接字符串 采取数组形式拼接) 结构稍微复杂
+
+4. createElement() 创建多个元素效率稍低一点点 但是结构更清晰
+
+总结一部分: innerHTML 和 createElement 这两种 如果单次比较则后者更快 但 innerHTML采取了数组形式而不是字符串拼接方式执行 其效率会远超 createElement
+
+总结: 不同浏览器下 innerHTML 效率要比 createElement 高
+
+; 注册事件(绑定事件)
+
+; 注册事件概述
+
+给元素添加事件 称为 注册事件 或者 绑定事件
+注册事件有两种方式: 传统方式 和 方法监听注册方式
+
+; 传统注册方式
+
+1. 利用 on 开头的事件 onclick
+2. <button onclick= "alert('hi~~')"></button>
+3. btn.onclick = function(){
+
+}
+4. 特点: 注册事件的唯一性
+5. 同一个元素同一个事件只能设置一个处理函数 最后注册的处理函数将会覆盖前面注册的处理函数
+
+; 方法监听注册方式
+
+1. w3c 标准 推荐方式
+2. addEventListener() 它是一个方法
+3. IE9 之前的 IE 不支持此方法 可使用 attachEvent() 代替
+4. 特点: 同一个元素同一个事件可以注册多个监听器
+5. 按注册顺序依次执行
+
+; addEventListener 事件监听方式
+
+ebentTarget.addEventListener(type, listener[,useCapture])
+
+ebentTarget.addEventListener() 方法将指定的监听器注册到 eventTarget(目标对象)上 当该对象触发指定的事件时 就会执行事件处理函数
+
+该方法接收三个参数:
+1. type: 事件类型字符串 比如 click、mouseover 注意这里不要带 on
+2. listener: 事件处理函数 事件发生时 会调用该监听函数
+3. useCapture: 可选参数 是一个布尔值 默认是 false 学完 DOM 事件流后 我们再进一步学习
+
+注意: 兼容性 IE9 以上才支持
+
+; attachEvent 事件监听方式
+
+eventTarget.attachEvent(eventNameWithOn,callback)
+
+eventTarget.attachEvent() 方法将指定的监听器注册到 eventTarget(目标对象)上 当该对象触发指定的事件时 指定的回调函数就会被执行
+
+该方法接收两个参数:
+1. eventNameWithOn: 事件类型字符串 比如 onclick、onmouseover 这里要带on
+2. callback: 事件处理函数 当目标触发事件时回调函数被调用
+
+; 处理兼容性问题的包装函数:
+
+function addEventListener(element, eventName, fn) {
+    ; 判断当前浏览器是否支持 addEventListener 方法
+    if (element.addEventListener) {
+        element.addEventListener(eventName, fn); 第三个参数 默认是false
+
+    } else if (element.attachEvent) {
+        element.attachEvent('on' + eventName, fn);
+    } else {
+        ; 相当于 element.onclick = fn;
+        element['on' + eventName] = fn;
+    }
+}
+; 兼容性处理的原则: 首先照顾大多数浏览器 再处理特殊浏览器
+
+; 删除事件
+
+; 删除事件的方式
+
+; 1. 传统注册方式
+eventTarget.onclick = null
+
+; 2. 方法监听注册方式
+(1) eventTarget.removeEventListenner(type, listener[,useCapture]);
+(2) eventTarget.detachEvent(eventNameWithOn,callback);
+
+; 删除事件兼容性解决方案
+
+function removeEventListener(element, eventName, fn) {
+    // 判断当前浏览器是否支持 removeEventListener 方法
+    if (element.removeEventListener) {
+        element.removeEventListener(eventName, fn); // 第三个参数 默认是 false
+    } else if (element.detachEvent) {
+        element.detachEvent('on' + eventName, fn);
+    } else {
+        element['on' + eventName] = null;
+    }
+}
+
+; DOM 事件流
+
+事件流 描述的是从页面中接收事件的顺序
+事件 发生时会在元素节点之间按照特定的顺序传播 这个 传播过程 即 DOM事件流
+
+比如给 document 里的 html 里的 bodu 里的 div元素注册点击事件
+
+; DOM 事件流分为3个阶段
+1. 捕获阶段
+2. 当前目标阶段
+3. 冒泡阶段
+
+事件冒泡: IE 最早推出 时间开始时由最具体的元素接收 然后逐级向上传播到 DOM 最顶层节点的过程
+事件捕获: 王景最早提出 由 DOM 最顶层节点开始 然后逐级向下传播到最具体的元素接受的过程
+
+事件 发生时会在元素节点之间按照特定的顺序传播 这个 传播过程 即 DOM事件流
+
+注意: 
+
+1. JS 代码中只能执行捕获或者冒泡其中的一个阶段
+2. onclick 和 attachEvent 只能得到冒泡阶段
+3. addEventListener(style,listener[,useCapture]) 
+   第三个参数如果是 true 表示在事件捕获阶段调用事件处理程序
+   如果是 lalse (不写默认就是 false) 表示在事件冒泡阶段调用事件处理程序
+
+4. 实际开发中我们很少使用事件捕获 我们跟关注事件冒泡
+5. 有些事件是没有冒泡的 比如 onblur onfocus onmouseenter onmouseleave
+6. 事件冒泡有时候会带来麻烦 有时候又会帮助很巧妙的做某些事件 (我们后面讲解)
+
+
+; 事件对象
+
+; 什么是事件对象
+
+eventTarget.click = function(){}
+eventTarget.addEventListener('click',function(event){})
+; 这个 event 就是事件对象 我们还喜欢的写成 e 或者 evt
+
+官方解释: event对象代表事件的状态 比如键盘按键的状态 鼠标的位置 鼠标按钮的状态
+简单解释: 事件发生后 跟事件相关的一系列信息数据的集合 都放到这个对象里面 这个对象就是 事件对象event 它有很多属性和方法
+
+比如: 
+1. 谁绑定了这个事件
+2. 鼠标触发事件的话 会得到鼠标的相关信息 如鼠标位置
+3. 键盘触发事件的话 会得到键盘的相关信息 如按了那个键
+
+; 事件对象的使用语法
+eventTarget.onclick = function(event){
+    ; 这个 event 就是事件对象 我们还喜欢的写成 e 或者 evt
+}
+
+eventTarget.addEventListener('click',function(event){
+    ; 这个 event 就是事件对象 我们还喜欢的写成 e 或者 evt
+})
+
+这个 event 是个形参 系统帮我们设定为事件对象 不需要传递实参过去
+当我们注册事件时 event 对象就会被系统自动创建 并依次传递给事件监听器(事件处理函数)
+
+; 事件对象的兼容性方案
+
+1. 标准浏览器中是浏览器给方法传递的参数 只需要定义形参 e 就可以获取到
+2. 在 ie6 ~ 8 中 浏览器不会给方法传递参数 如果需要的话 需要到 windows.event 中获取查找
+
+; 解决:
+
+e = e || windows.event;
+
+; 常见事件对象的属性和方法
+
+1. e.target 返回的是触发事件的对象 (元素) this 返回的是绑定事件的对象(元素)
+
+区别: 
+e.target 点击了那个元素 就返回那个元素 this 那个元素绑定了这个点击事件 那么就返回谁
+
+div.onclick = function (e) {
+    e = e || window.event;
+    var target = e.target || e.querySelector;
+    console.log(target);
+}
+
+2. 了解 跟 this 有个非常相似的属性 currentTarget ie678不认识
+
+; 阻止默认行为
+
+阻止默认行为(事件)  让链接不跳转 或者让提交按钮不提交
+
+; 传统的注册方式
+
+普通浏览器 e.preventDefault(); 方法
+e.preventDefault();
+
+低版本浏览器 ie678  returnValue 属性
+e.returnValue;
+
+我们可以利用 return false 也能阻止默认行为 没有兼容性问题 
+特点: 
+return 后面的代码不执行了 而且只限于传统的注册方式
+
+; 阻止事件冒泡
+
+; 阻止事件冒泡的两种方式
+
+事件冒泡: 开始时由最具体的元素接收 然后逐级向上传播到 DOM 最顶层节点
+
+事件冒泡本身的特性 会带来的坏处 也会带来的好处 需要灵活掌握
+
+; 阻止事件冒泡
+
+标准写法: 利用事件对象里面的 stopPropagation() 方法
+e.stopPropagation()
+
+非标准写法: IE 6-8 利用事件对象 cancelBubble属性
+
+; 阻止事件冒泡的兼容性解决方案
+
+if(e && e.stopPropagation){
+    e.stopPropagation();
+}else{
+    window.event.cancelBubble = true;
+}
+
+; 事件委托 (代理 委派)
+
+; 事件冒泡本身的特性 会带来的坏处 也会带来的好处 需要我们灵活掌握 生活场景如下:
+例子:
+
+咱们班有 100 个学生 快递员有 100 个快递 如果一个个的送话费事件较长 同时每个学生领取的时候 也需要排队领取 也花费时间较长 何如?
+
+解决方案: 快递员把 100 个快递 委托给班主任 班主任把这些快递放到办公室 同学们下课自行领取即可
+
+优势: 快递员省事 委托给班主任就可以走了 同学们领取也方便 因为相信班主任
+
+; 事件冒泡本身的特性 会带来的坏处 也会带来的好处 需要我们灵活掌握 程序中也有如此场景:
+例子:
+
+<ul>
+    <li>知否知否，应该有弹框在手</li>
+    <li>知否知否，应该有弹框在手</li>
+    <li>知否知否，应该有弹框在手</li>
+    <li>知否知否，应该有弹框在手</li>
+    <li>知否知否，应该有弹框在手</li>
+</ul>
+
+点击每个 li 都会弹出对话框 以前需要给每个 li 注册事件 是非常辛苦的 而且访问 DOM 的次数越多 这就会延长整个页面的交互就绪时间
+
+; 事件委托
+
+事件委托也称为事件代理 在 jQuery 里面称为事件委派
+
+; 事件委托的原理
+
+不是每个子节点单独设置事件监听器 而是事件监听器设置在其父节点上 然后利用冒泡原理影响设置每个子节点
+
+以上案例: 给 ul 注册点击事件 然后利用事件对象的 target 来找到当前点击的 li 因为点击了 li 事件会冒泡到 ul 上 ul 有注册事件 就会触发事件监听器
+
+; 事件委托的作业
+
+我们只操作了一次 DOM 提高了程序的性能
+
+; 常用的鼠标事件
+
+1. 禁止鼠标右键菜单
+contextmenu 主要控制应该何时显示上下文菜单 主要用于程序员取消默认的上下文菜单
+
+document.addEventListener('contextmenu',function(e){
+    e.preventDefault();
+})
+
+2. 禁用鼠标选中(selectstart 开始选中)
+document.addEventListener('selectstart',function(e){
+    e.preventDefault();
+})
+
+; 鼠标事件对象
+
+event对象代表事件的状态 跟事件相关的一系列信息数据的集合 现阶段我们主要是用鼠标事件对象
+MouseEvent 和键盘事件对象 KeyboarEvent
+
+e.clientX 返回鼠标相对于浏览器窗口可视区的x坐标
+e.clientY 返回鼠标相对于浏览器窗口可视区的Y坐标
+e.pageX 返回鼠标相对于文档页面的X坐标 IE9+ 支持
+e.pageY 返回鼠标相对于文档页面的Y坐标 IE9+ 支持
+e.screenX 返回鼠标相对于电脑屏幕的X坐标
+e.screenY 返回鼠标相对于电脑屏幕的Y坐标
+
+; 常见的键盘事件
+
+onkeyup         某个键盘按键被松开时触发
+onkeydown       某个键盘按键被按下时触发
+onkeypress      某个键盘按键被按下时 触发 (但是它不能别功能键 比如 ctrl shift 箭头等)
+
+注意: 
+1. 如果使用 addEventListener 不需要加 on
+2. onkeypress 和前面两个的区别是 它不识别功能键 比如左右箭头 shift等
+3. 三个事件的执行顺序是: keydown -- keypress -- keyup
+
+; 键盘事件对象
+
+keyCode 返回改键的ASCII值
+
+注意：
+1. onkeydown 和onkeyup 不区分字母大小写 onkeypress 区分字母大小写
+2. 在我们实际开发中 我么更多的使用 keydown 和 keyup 它能识别所有的键 (包括功能键)
+3. keypress 不识别功能键 但是 keypress 属性能区分大小写 (返回不同的ASCII码值)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

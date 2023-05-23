@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Math对象随机数方法 random() 返回一个随机的小数  0 <= x < 1
+        // 这个方法里面不跟参数
+        // 代码验证
+        console.log(Math.random());
+
+        // 我们想要得到两个数之间的随机整数 并且包含这2个整数
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
+        }
+        var num = getRandomInt(1, 10);
+        console.log(num);
+
+        // 随机点名
+        var arr = ['张三', '张三疯', '张三疯子', '黎明', '小王'];
+        // console.log(arr[0]);
+        console.log(arr[getRandomInt(0, arr.length - 1)]);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">清空所有数据</button>
+    <script>
+        var ipt = document.querySelector('input');
+        var set = document.querySelector('.set');
+        var get = document.querySelector('.get');
+        var remove = document.querySelector('.remove');
+        var del = document.querySelector('.del');
+        set.addEventListener('click', function () {
+            // 点击后可以把表单的值存储起来
+            var val = ipt.value;
+            sessionStorage.setItem('uname', val);
+            sessionStorage.setItem('pdn', val);
+        })
+        get.addEventListener('click', function () {
+            console.log(sessionStorage.getItem('uname'));
+
+        })
+        remove.addEventListener('click', function () {
+            sessionStorage.removeItem('uname');
+
+        })
+        del.addEventListener('click', function () {
+            sessionStorage.clear();
+
+        })
+    </script>
+</body>
+
+</html>

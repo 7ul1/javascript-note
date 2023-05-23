@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="begin">开启定时器</button>
+    <button class="stop">关闭定时器</button>
+    <script>
+        var begin = document.querySelector('.begin');
+        var stop = document.querySelector('.stop');
+        var stopTime = null; // 全局变量 null是一个空对象
+        begin.addEventListener('click', function () {
+            // 如果在这函数里面声明了这个启动定时器的变量名 在下面停止的时候是调用不到它的 因为这里的是局部变量！！！ 要在外面声明一个全局变量
+
+            stopTime = setInterval(function () {
+                console.log('begin来咯');
+            }, 1000);
+        });
+        stop.addEventListener('click', function () {
+            clearInterval(stopTime);
+        });
+    </script>
+</body>
+
+</html>

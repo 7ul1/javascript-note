@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1. 字面量 电脑
+
+        // var obj = {
+        //     color: '灰色',
+        //     weigth: '44公斤',
+        //     pp: '雅诗兰帝',
+        //     xh: 'Y9千',
+        //     sayHi: function () {
+        //         console.log('看电视、听音乐、敲代码');
+        //     }
+        // }
+        // console.log(obj.color);
+        // console.log(obj.weigth);
+        // console.log(obj.pp);
+        // console.log(obj.xh);
+        // obj.sayHi();
+
+        // 2. new object 按钮
+
+        // var obj = new Object();
+        // obj.weigth = '100公里';
+        // obj.height = '800千里';
+        // obj.color = '灰色';
+        // obj.xingwei = function () {
+        //     console.log('点击后会弹出快乐');
+        // }
+        // console.log(obj.weigth);
+        // console.log(obj['height']);
+        // console.log(obj.color);
+        // obj.xingwei();
+
+        // 3. 车
+
+        function Car(weigth, color, paizi) {
+            this.weigth = weigth;
+            this.color = color;
+            this.paizi = paizi;
+            this.xingwei = function (Xingw) {
+                console.log(Xingw);
+            }
+        }
+        var Co = new Car('200斤', '灰色', '优酷');
+        Co.xingwei('可以载人 拉货 耕田');
+        console.log(Co.weigth);
+        // console.log(Car.weigth);
+        // console.log(Co);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
